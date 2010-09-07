@@ -12,7 +12,7 @@ name = 'jaraco.compat'
 
 setup(
 	name = name,
-	use_hg_version = True,
+	use_hg_version_increment = '0.1',
 	description = 'Modules providing forward compatibility across some Python 2.x versions',
 	author = 'Jason R. Coombs',
 	author_email = 'jaraco@jaraco.com',

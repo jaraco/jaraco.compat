@@ -1,8 +1,5 @@
-# this module provides forward-compatibility for Python 2.6 and later
+# this module provides forward-compatibility for Python 2.6 and 2.7
 #  features on Python 2.5
-
-# At such a time as this library moves to Python 2.6+, these constructs
-#  can easily be replaced by searching for py25compat.
 
 import __builtin__
 
