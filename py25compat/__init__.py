@@ -5,7 +5,7 @@ import __builtin__
 
 # next statement
 try:
-	next
+	next = next
 except NameError:
 	class __NotSupplied(object): pass
 	def next(iterable, default=__NotSupplied):
