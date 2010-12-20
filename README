@@ -1,0 +1,43 @@
+.. -*- restructuredtext -*-
+
+jaraco.compat
+=============
+
+``jaraco.compat`` provides forward compatibility for Python packages,
+allowing future constructs to be borrowed before they're available in
+the standard library.
+
+Usage
+-----
+
+Import functions from the appropriate pyXXcompat module in your python
+code. When you're eventually ready to upgrade beyond pyXX, you can
+easily locate (with a grep) and replace those functions with the
+canonical implementations.
+
+Example
+-------
+
+Say you want a namedtuple (introduced in Python 2.6) in a project which
+supports Python 2.5 and greater::
+
+    from py25compat import namedtuple
+    MyTuple = namedtuple('MyTuple', 'a b c')
+    mt = MyTuple(1,2,3)
+
+With jaraco.compat installed, this code will run on Python 2.5 and
+greater. When the project is ready to move to Python 2.6, one can easily
+grep for py25compat and make the necessary replacements with minimal
+impact on the code. In this case::
+
+    from collections import namedtuple
+    MyTuple = namedtuple('MyTuple', 'a b c')
+    mt = MyTuple(1,2,3)
+
+Changes
+-------
+
+0.5
+~~~
+
+* Added py26compat with ``cmp_to_key``.
