@@ -37,6 +37,11 @@ impact on the code. In this case::
 Changes
 -------
 
+0.6
+~~~
+
+* Added py26compat.total_seconds
+
 0.5
 ~~~
 
