@@ -41,6 +41,7 @@ Changes
 ~~~
 
 * Added py26compat.total_seconds
+* Added py24compat.partition
 
 0.5
 ~~~
