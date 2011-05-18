@@ -37,6 +37,12 @@ impact on the code. In this case::
 Changes
 -------
 
+0.7
+~~~
+
+* Added py31compat.functools, which provides `wraps` and `update_wrapper` that
+  supply the Python 3.2 __wrapped__ attribute.
+
 0.6
 ~~~
 
