@@ -3,14 +3,14 @@
 """
 Setup script for jaraco.compat package
 
-Copyright © 2010 Jason R. Coombs
+Copyright © 2010-2011 Jason R. Coombs
 """
 
-from setuptools import setup, find_packages
+from setuptools import find_packages
 
 name = 'jaraco.compat'
 
-setup(
+setup_params = dict(
 	name = name,
 	use_hg_version = dict(increment='0.1'),
 	description = 'Modules providing forward compatibility across some Python 2.x versions',
@@ -34,3 +34,7 @@ setup(
 		'hgtools>=0.6.4',
 	],
 )
+
+if __name__ == '__main__':
+	from setuptools import setup
+	setup(**setup_params)
