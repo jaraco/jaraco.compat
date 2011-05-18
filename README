@@ -40,8 +40,10 @@ Changes
 0.7
 ~~~
 
-* Added py31compat.functools, which provides `wraps` and `update_wrapper` that
+* Added `py31compat.functools`, which provides `wraps` and `update_wrapper` that
   supply the Python 3.2 __wrapped__ attribute.
+* Added `py26compat.collections`, which provides `OrderedDict` on Python 2.6
+  and earlier (via the ordereddict package).
 
 0.6
 ~~~

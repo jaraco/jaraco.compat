@@ -6,9 +6,13 @@ Setup script for jaraco.compat package
 Copyright © 2010-2011 Jason R. Coombs
 """
 
+import sys
+
 from setuptools import find_packages
 
 name = 'jaraco.compat'
+
+py26_reqs = ['ordereddict >= 1.1'] if sys.version_info < (2,7) else []
 
 setup_params = dict(
 	name = name,
@@ -27,7 +31,7 @@ setup_params = dict(
 	entry_points = {
 	},
 	install_requires=[
-	],
+	] + py26_reqs,
 	dependency_links = [
 	],
 	setup_requires=[
