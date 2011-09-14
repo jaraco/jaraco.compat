@@ -5,7 +5,6 @@ Setup script for jaraco.compat package
 
 Copyright © 2010-2011 Jason R. Coombs
 """
-
 import sys
 import os
 
@@ -14,8 +13,11 @@ from setuptools import find_packages
 name = 'jaraco.compat'
 
 py26_reqs = ['ordereddict >= 1.1'] if sys.version_info < (2,7) else []
-with open(os.path.join(os.path.dirname(__file__), 'README')) as f:
+try:
+	f = open(os.path.join(os.path.dirname(__file__), 'README'))
 	long_description = f.read()
+finally:
+	f.close()
 
 setup_params = dict(
 	name = name,
