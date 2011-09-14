@@ -18,14 +18,14 @@ import os
 
 def os_term(pid):
 	import signal
-	os.kill(signal.SIG_TERM, pid)
+	os.kill(signal.SIGTERM, pid)
 
 def term_pid_win32(pid):
 	raise NotImplementedError()
 
 def os_kill(pid):
 	import signal
-	os.kill(signal.SIG_KILL, pid)
+	os.kill(signal.SIGKILL, pid)
 
 def kill_pid_win32(pid):
 	raise NotImplementedError()
