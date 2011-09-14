@@ -37,6 +37,12 @@ impact on the code. In this case::
 Changes
 -------
 
+0.8
+~~~
+
+* Added `py25compat.subprocess` with `term_proc` and `kill_proc` which
+  take Popen objects and terminate and kill them respectively.
+
 0.7
 ~~~
 
