@@ -124,7 +124,7 @@ def lru_cache(maxsize=100, typed=False):
 		def cache_info():
 			"""Report cache statistics"""
 			with lock:
-				return _CacheInfo(hits, misses, maxsize, len(cache))
+				return _CacheInfo(hits[0], misses[0], maxsize, len(cache))
 
 		def cache_clear():
 			"""Clear the cache and cache statistics"""
