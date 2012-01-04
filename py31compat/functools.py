@@ -2,6 +2,9 @@ from __future__ import absolute_import
 
 import functools
 from collections import namedtuple
+from thread import allocate_lock as Lock
+
+from py26compat.collections import OrderedDict
 
 # Add the automatic addition of the __wrapped__ attribute when calling
 #  update_wrapper or wraps.
@@ -40,10 +43,16 @@ def lru_cache(maxsize=100, typed=False):
     # The internals of the lru_cache are encapsulated for thread safety and
     # to allow the implementation to change (including a possible C version).
 
-    def decorating_function(user_function,
-            *, tuple=tuple, sorted=sorted, map=map, len=len, type=type, KeyError=KeyError):
+    def decorating_function(user_function, **kwargs):
+        tuple=kwargs.get('tuple', tuple)
+        sorted=kwargs.get('sorted', sorted)
+        map=kwargs.get('map', map)
+        len=kwargs.get('len', len)
+        type=kwargs.get('type', type)
+        KeyError=kwargs.get('KeyError', KeyError)
 
-        hits = misses = 0
+        hits = [0]
+        misses = [0]
         kwd_mark = (object(),)          # separates positional and keyword args
         lock = Lock()                   # needed because OrderedDict isn't threadsafe
 
@@ -52,7 +61,7 @@ def lru_cache(maxsize=100, typed=False):
 
             @wraps(user_function)
             def wrapper(*args, **kwds):
-                nonlocal hits, misses
+                #nonlocal hits, misses
                 key = args
                 if kwds:
                     sorted_items = tuple(sorted(kwds.items()))
@@ -63,13 +72,13 @@ def lru_cache(maxsize=100, typed=False):
                         key += tuple(type(v) for k, v in sorted_items)
                 try:
                     result = cache[key]
-                    hits += 1
+                    hits[0] += 1
                     return result
                 except KeyError:
                     pass
                 result = user_function(*args, **kwds)
                 cache[key] = result
-                misses += 1
+                misses[0] += 1
                 return result
         else:
             cache = OrderedDict()           # ordered least recent to most recent
@@ -78,7 +87,7 @@ def lru_cache(maxsize=100, typed=False):
 
             @wraps(user_function)
             def wrapper(*args, **kwds):
-                nonlocal hits, misses
+                #nonlocal hits, misses
                 key = args
                 if kwds:
                     sorted_items = tuple(sorted(kwds.items()))
@@ -91,14 +100,14 @@ def lru_cache(maxsize=100, typed=False):
                     try:
                         result = cache[key]
                         cache_renew(key)    # record recent use of this key
-                        hits += 1
+                        hits[0] += 1
                         return result
                     except KeyError:
                         pass
                 result = user_function(*args, **kwds)
                 with lock:
                     cache[key] = result     # record recent use of this key
-                    misses += 1
+                    misses[0] += 1
                     if len(cache) > maxsize:
                         cache_popitem(0)    # purge least recently used cache entry
                 return result
@@ -110,10 +119,10 @@ def lru_cache(maxsize=100, typed=False):
 
         def cache_clear():
             """Clear the cache and cache statistics"""
-            nonlocal hits, misses
+            #nonlocal hits, misses
             with lock:
                 cache.clear()
-                hits = misses = 0
+                hits[0] = misses[0] = 0
 
         wrapper.cache_info = cache_info
         wrapper.cache_clear = cache_clear
