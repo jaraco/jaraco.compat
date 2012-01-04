@@ -12,6 +12,7 @@ except ImportError:
 		from _dummy_thread import allocate_lock as Lock
 
 from py26compat.collections import OrderedDict
+from ._functools_wraps import wraps
 
 def _move_to_end(odict, key):
 	'''
@@ -64,7 +65,7 @@ def lru_cache(maxsize=100, typed=False):
 		if maxsize is None:
 			cache = dict()				# simple cache without ordering or size limit
 
-			@functools.wraps(user_function)
+			@wraps(user_function)
 			def wrapper(*args, **kwds):
 				#nonlocal hits, misses
 				key = args
@@ -93,7 +94,7 @@ def lru_cache(maxsize=100, typed=False):
 			cache_renew = getattr(cache, 'move_to_end',
 				functools.partial(_move_to_end, cache))
 
-			@functools.wraps(user_function)
+			@wraps(user_function)
 			def wrapper(*args, **kwds):
 				#nonlocal hits, misses
 				key = args

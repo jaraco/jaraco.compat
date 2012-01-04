@@ -1,16 +1,2 @@
-from __future__ import absolute_import
-
-import functools
-import sys
-
-# Add the automatic addition of the __wrapped__ attribute when calling
-#  update_wrapper or wraps.
-def update_wrapper(wrapper, wrapped, *args, **kwargs):
-	res = functools.update_wrapper(wrapper, wrapped, *args, **kwargs)
-	res.__wrapped__ = wrapped
-	return res
-
-def wraps(wrapped, *args, **kwargs):
-	return functools.partial(update_wrapper, wrapped=wrapped, *args, **kwargs)
-
 from .cache import lru_cache
+from ._functools_wraps import update_wrapper, wraps
