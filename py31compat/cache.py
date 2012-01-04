@@ -1,3 +1,7 @@
+from __future__ import absolute_import
+
+import functools
+import __builtin__
 from collections import namedtuple
 try:
 	from thread import allocate_lock as Lock
@@ -8,6 +12,14 @@ except ImportError:
 		from _dummy_thread import allocate_lock as Lock
 
 from py26compat.collections import OrderedDict
+
+def _move_to_end(odict, key):
+	'''
+	Move an existing element to the end.
+
+	Raises KeyError if the element does not exist.
+	'''
+	odict[key] = odict.pop(key)
 
 # lru_cache implementation from Python 3.3dev [dfffb293f4b3]
 _CacheInfo = namedtuple("CacheInfo", "hits misses maxsize currsize")
@@ -37,12 +49,12 @@ def lru_cache(maxsize=100, typed=False):
     # to allow the implementation to change (including a possible C version).
 
     def decorating_function(user_function, **kwargs):
-        tuple=kwargs.get('tuple', tuple)
-        sorted=kwargs.get('sorted', sorted)
-        map=kwargs.get('map', map)
-        len=kwargs.get('len', len)
-        type=kwargs.get('type', type)
-        KeyError=kwargs.get('KeyError', KeyError)
+        tuple=kwargs.get('tuple', __builtin__.tuple)
+        sorted=kwargs.get('sorted', __builtin__.sorted)
+        map=kwargs.get('map', __builtin__.map)
+        len=kwargs.get('len', __builtin__.len)
+        type=kwargs.get('type', __builtin__.type)
+        KeyError=kwargs.get('KeyError', __builtin__.KeyError)
 
         hits = [0]
         misses = [0]
@@ -52,7 +64,7 @@ def lru_cache(maxsize=100, typed=False):
         if maxsize is None:
             cache = dict()              # simple cache without ordering or size limit
 
-            @wraps(user_function)
+            @functools.wraps(user_function)
             def wrapper(*args, **kwds):
                 #nonlocal hits, misses
                 key = args
@@ -76,9 +88,12 @@ def lru_cache(maxsize=100, typed=False):
         else:
             cache = OrderedDict()           # ordered least recent to most recent
             cache_popitem = cache.popitem
-            cache_renew = cache.move_to_end
+            # use the move_to_end method if available, otherwise fallback to
+            #  the function.
+            cache_renew = getattr(cache, 'move_to_end',
+                functools.partial(_move_to_end, cache))
 
-            @wraps(user_function)
+            @functools.wraps(user_function)
             def wrapper(*args, **kwds):
                 #nonlocal hits, misses
                 key = args
