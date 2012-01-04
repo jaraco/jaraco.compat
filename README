@@ -35,6 +35,12 @@ impact on the code. In this case::
 Changes
 -------
 
+0.9
+~~~
+
+* Added `py31compat.collections.lru_cache` which provides a backport of the
+  Python 3.2 cache of the same name.
+
 0.8
 ~~~
 
