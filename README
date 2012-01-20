@@ -35,6 +35,11 @@ impact on the code. In this case::
 Changes
 -------
 
+1.0
+~~~
+
+* Adding `py26compat.subprocess.check_output`.
+
 0.9
 ~~~
 
