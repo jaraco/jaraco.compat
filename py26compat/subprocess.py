@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import subprocess
 
 try:
-	check_call = subprocess.check_call
+	check_output = subprocess.check_output
 except AttributeError:
 	# copied from Python 2.7.2
 	def check_output(*popenargs, **kwargs):
