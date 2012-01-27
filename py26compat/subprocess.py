@@ -35,5 +35,7 @@ except AttributeError:
 			cmd = kwargs.get("args")
 			if cmd is None:
 				cmd = popenargs[0]
-			raise subprocess.CalledProcessError(retcode, cmd, output=output)
+			err = subprocess.CalledProcessError(retcode, cmd)
+			err.output = output
+			raise err
 		return output
