@@ -3,7 +3,7 @@
 """
 Setup script for jaraco.compat package
 
-Copyright © 2010-2011 Jason R. Coombs
+Copyright © 2010-2012 Jason R. Coombs
 """
 import sys
 import os
@@ -44,6 +44,7 @@ setup_params = dict(
 	setup_requires=[
 		'hgtools>=0.6.4',
 	],
+	use_2to3=True,
 )
 
 if __name__ == '__main__':
