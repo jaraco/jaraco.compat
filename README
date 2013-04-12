@@ -35,6 +35,12 @@ impact on the code. In this case::
 Changes
 -------
 
+1.1
+~~~
+
+* Added `py27compat.traceback` with format_exc helper (consistently returns
+  unicode results).
+
 1.0
 ~~~
 
