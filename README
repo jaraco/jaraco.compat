@@ -35,6 +35,11 @@ impact on the code. In this case::
 Changes
 -------
 
+1.2
+~~~
+
+* Added `py24compat.functools` with `wraps` degenerate wrapper.
+
 1.1
 ~~~
 
