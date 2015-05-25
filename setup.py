@@ -3,7 +3,7 @@
 """
 Setup script for jaraco.compat package
 
-Copyright © 2010-2012 Jason R. Coombs
+Copyright © 2010-2015 Jason R. Coombs
 """
 import sys
 import os
