@@ -12,6 +12,9 @@ Forward compatibility for Python packages,
 allowing future constructs to be borrowed before they're available in
 the standard library.
 
+This package is generally deprecated in favor of more surgical
+backports in separate packages.
+
 License
 =======
 
