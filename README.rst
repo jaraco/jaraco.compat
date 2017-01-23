@@ -1,12 +1,26 @@
-jaraco.compat
-=============
+.. image:: https://img.shields.io/pypi/v/skeleton.svg
+   :target: https://pypi.org/project/skeleton
+
+.. image:: https://img.shields.io/pypi/pyversions/skeleton.svg
+
+.. image:: https://img.shields.io/pypi/dm/skeleton.svg
+
+.. image:: https://img.shields.io/travis/jaraco/skeleton/master.svg
+   :target: http://travis-ci.org/jaraco/skeleton
 
 ``jaraco.compat`` provides forward compatibility for Python packages,
 allowing future constructs to be borrowed before they're available in
 the standard library.
 
+License
+=======
+
+License is indicated in the project metadata (typically one or more
+of the Trove classifiers). For more details, see `this explanation
+<https://github.com/jaraco/skeleton/issues/1>`_.
+
 Usage
------
+=====
 
 Import functions from the appropriate pyXXcompat module in your python
 code. When you're eventually ready to upgrade beyond pyXX, you can
@@ -14,7 +28,7 @@ easily locate (with a grep) and replace those functions with the
 canonical implementations.
 
 Example
--------
+=======
 
 Say you want a namedtuple (introduced in Python 2.6) in a project which
 supports Python 2.5 and greater::
