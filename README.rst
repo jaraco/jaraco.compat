@@ -1,14 +1,14 @@
-.. image:: https://img.shields.io/pypi/v/skeleton.svg
-   :target: https://pypi.org/project/skeleton
+.. image:: https://img.shields.io/pypi/v/jaraco.compat.svg
+   :target: https://pypi.org/project/jaraco.compat
 
-.. image:: https://img.shields.io/pypi/pyversions/skeleton.svg
+.. image:: https://img.shields.io/pypi/pyversions/jaraco.compat.svg
 
-.. image:: https://img.shields.io/pypi/dm/skeleton.svg
+.. image:: https://img.shields.io/pypi/dm/jaraco.compat.svg
 
-.. image:: https://img.shields.io/travis/jaraco/skeleton/master.svg
-   :target: http://travis-ci.org/jaraco/skeleton
+.. image:: https://img.shields.io/travis/jaraco/jaraco.compat/master.svg
+   :target: http://travis-ci.org/jaraco/jaraco.compat
 
-``jaraco.compat`` provides forward compatibility for Python packages,
+Forward compatibility for Python packages,
 allowing future constructs to be borrowed before they're available in
 the standard library.
 
