@@ -1,7 +1,10 @@
 # this module provides forward-compatibility for Python 2.6 and 2.7
 #  features on Python 2.5
 
-import __builtin__
+try:
+	import builtins
+except ImportError:
+	import __builtin__ as builtins
 
 # next statement
 try:
@@ -28,5 +31,5 @@ try:
 	enumerate = enumerate
 except TypeError:
 	def enumerate(seq, start=0):
-		for index, item in __builtin__.enumerate(seq):
+		for index, item in builtins.enumerate(seq):
 			yield index + start, item

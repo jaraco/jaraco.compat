@@ -1,8 +1,13 @@
 from __future__ import absolute_import
 
 import functools
-import __builtin__
 from collections import namedtuple
+
+try:
+	import builtins
+except ImportError:
+	import __builtin__ as builtins
+
 try:
 	from thread import allocate_lock as Lock
 except ImportError:
@@ -50,12 +55,12 @@ def lru_cache(maxsize=100, typed=False):
 	# to allow the implementation to change (including a possible C version).
 
 	def decorating_function(user_function, **kwargs):
-		tuple=kwargs.get('tuple', __builtin__.tuple)
-		sorted=kwargs.get('sorted', __builtin__.sorted)
-		map=kwargs.get('map', __builtin__.map)
-		len=kwargs.get('len', __builtin__.len)
-		type=kwargs.get('type', __builtin__.type)
-		KeyError=kwargs.get('KeyError', __builtin__.KeyError)
+		tuple=kwargs.get('tuple', builtins.tuple)
+		sorted=kwargs.get('sorted', builtins.sorted)
+		map=kwargs.get('map', builtins.map)
+		len=kwargs.get('len', builtins.len)
+		type=kwargs.get('type', builtins.type)
+		KeyError=kwargs.get('KeyError', builtins.KeyError)
 
 		hits = [0]
 		misses = [0]
