@@ -1,3 +1,9 @@
+1.4
+===
+
+* Update project skeleton, including automated deployments. Tests
+  are now run on Travis-CI with tests largely passing on Python 3.
+
 1.3
 ===
 
