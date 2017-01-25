@@ -1,3 +1,9 @@
+1.4.1
+=====
+
+* Dropped 2to3 invocation in ``setup``. Fixes issue where wheels
+  would be broken on Python 2.
+
 1.4
 ===
 

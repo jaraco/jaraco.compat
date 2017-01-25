@@ -53,7 +53,6 @@ params = dict(
 	],
 	entry_points={
 	},
-	use_2to3=True,
 )
 if __name__ == '__main__':
 	setuptools.setup(**params)
