@@ -12,13 +12,6 @@ with io.open('README.rst', encoding='utf-8') as readme:
 name = 'jaraco.compat'
 description = 'Modules providing forward compatibility across some Python 2.x versions'
 
-pre_27 = (
-	':python_version == "2.6" or '
-	'python_version == "2.5" or '
-	'python_version == "2.4" or '
-	'python_version == "2.3"'
-)
-
 params = dict(
 	name=name,
 	use_scm_version=True,
@@ -33,8 +26,9 @@ params = dict(
 		'six',
 	],
 	extras_require={
-		pre_27: [
+		':python_version == "2.6"': [
 			'ordereddict >= 1.1',
+			'subprocess32',
 		],
 	},
 	setup_requires=[
