@@ -1,3 +1,8 @@
+2.0
+===
+
+* Dropped compatibility modules for Python 2.5 and earlier.
+
 1.4.1
 =====
 
