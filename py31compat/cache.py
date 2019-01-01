@@ -13,11 +13,12 @@ try:
 except ImportError:
 	try:
 		from _thread import allocate_lock as Lock
-	except:
+	except Exception:
 		from _dummy_thread import allocate_lock as Lock
 
 from py26compat.collections import OrderedDict
 from ._functools_wraps import wraps
+
 
 def _move_to_end(odict, key):
 	'''
@@ -27,8 +28,10 @@ def _move_to_end(odict, key):
 	'''
 	odict[key] = odict.pop(key)
 
+
 # lru_cache implementation from Python 3.3dev [dfffb293f4b3]
 _CacheInfo = namedtuple("CacheInfo", "hits misses maxsize currsize")
+
 
 def lru_cache(maxsize=100, typed=False):
 	"""Least-recently-used cache decorator.
@@ -50,17 +53,17 @@ def lru_cache(maxsize=100, typed=False):
 
 	"""
 	# Users should only access the lru_cache through its public API:
-	#		cache_info, cache_clear, and f.__wrapped__
+	#     cache_info, cache_clear, and f.__wrapped__
 	# The internals of the lru_cache are encapsulated for thread safety and
 	# to allow the implementation to change (including a possible C version).
 
 	def decorating_function(user_function, **kwargs):
-		tuple=kwargs.get('tuple', builtins.tuple)
-		sorted=kwargs.get('sorted', builtins.sorted)
-		map=kwargs.get('map', builtins.map)
-		len=kwargs.get('len', builtins.len)
-		type=kwargs.get('type', builtins.type)
-		KeyError=kwargs.get('KeyError', builtins.KeyError)
+		tuple = kwargs.get('tuple', builtins.tuple)
+		sorted = kwargs.get('sorted', builtins.sorted)
+		map = kwargs.get('map', builtins.map)
+		len = kwargs.get('len', builtins.len)
+		type = kwargs.get('type', builtins.type)
+		KeyError = kwargs.get('KeyError', builtins.KeyError)
 
 		hits = [0]
 		misses = [0]
@@ -72,7 +75,7 @@ def lru_cache(maxsize=100, typed=False):
 
 			@wraps(user_function)
 			def wrapper(*args, **kwds):
-				#nonlocal hits, misses
+				# nonlocal hits, misses
 				key = args
 				if kwds:
 					sorted_items = tuple(sorted(kwds.items()))
@@ -96,12 +99,13 @@ def lru_cache(maxsize=100, typed=False):
 			cache_popitem = cache.popitem
 			# use the move_to_end method if available, otherwise fallback to
 			#  the function.
-			cache_renew = getattr(cache, 'move_to_end',
+			cache_renew = getattr(
+				cache, 'move_to_end',
 				functools.partial(_move_to_end, cache))
 
 			@wraps(user_function)
 			def wrapper(*args, **kwds):
-				#nonlocal hits, misses
+				# nonlocal hits, misses
 				key = args
 				if kwds:
 					sorted_items = tuple(sorted(kwds.items()))
@@ -113,7 +117,7 @@ def lru_cache(maxsize=100, typed=False):
 				with lock:
 					try:
 						result = cache[key]
-						cache_renew(key)	# record recent use of this key
+						cache_renew(key)  # record recent use of this key
 						hits[0] += 1
 						return result
 					except KeyError:
@@ -123,7 +127,7 @@ def lru_cache(maxsize=100, typed=False):
 					cache[key] = result		# record recent use of this key
 					misses[0] += 1
 					if len(cache) > maxsize:
-						cache_popitem(0)	# purge least recently used cache entry
+						cache_popitem(0)  # purge least recently used cache entry
 				return result
 
 		def cache_info():
@@ -133,7 +137,7 @@ def lru_cache(maxsize=100, typed=False):
 
 		def cache_clear():
 			"""Clear the cache and cache statistics"""
-			#nonlocal hits, misses
+			# nonlocal hits, misses
 			with lock:
 				cache.clear()
 				hits[0] = misses[0] = 0

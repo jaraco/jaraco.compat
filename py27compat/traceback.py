@@ -7,8 +7,11 @@ import traceback
 #  return a unicode string as it does on Python 3.
 # I determined this finding experimentally. If you find that's not the case,
 #  provide a counter example. Thanks.
+
+
 def _format_exc_2x(*args, **kwargs):
 	return traceback.format_exc(*args, **kwargs).decode('utf-8')
+
 
 format_exc = (
 	_format_exc_2x
