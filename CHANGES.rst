@@ -1,3 +1,8 @@
+2.1
+===
+
+* Refreshed project metadata.
+
 2.0
 ===
 
