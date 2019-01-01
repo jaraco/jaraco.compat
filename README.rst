@@ -3,10 +3,14 @@
 
 .. image:: https://img.shields.io/pypi/pyversions/jaraco.compat.svg
 
-.. image:: https://img.shields.io/pypi/dm/jaraco.compat.svg
-
 .. image:: https://img.shields.io/travis/jaraco/jaraco.compat/master.svg
-   :target: http://travis-ci.org/jaraco/jaraco.compat
+   :target: https://travis-ci.org/jaraco/jaraco.compat
+
+.. .. image:: https://img.shields.io/appveyor/ci/jaraco/skeleton/master.svg
+..    :target: https://ci.appveyor.com/project/jaraco/skeleton/branch/master
+
+.. .. image:: https://readthedocs.org/projects/skeleton/badge/?version=latest
+..    :target: https://skeleton.readthedocs.io/en/latest/?badge=latest
 
 Forward compatibility for Python packages,
 allowing future constructs to be borrowed before they're available in
@@ -14,13 +18,6 @@ the standard library.
 
 This package is generally deprecated in favor of more surgical
 backports in separate packages.
-
-License
-=======
-
-License is indicated in the project metadata (typically one or more
-of the Trove classifiers). For more details, see `this explanation
-<https://github.com/jaraco/skeleton/issues/1>`_.
 
 Usage
 =====
