@@ -1,3 +1,8 @@
+2.2
+===
+
+* Added ``py33compat`` module with ``collections.api``.
+
 2.1
 ===
 
