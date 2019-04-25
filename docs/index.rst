@@ -7,17 +7,22 @@ Welcome to jaraco.compat documentation!
    history
 
 
-.. automodule:: py27compat
+.. automodule:: py27compat.properties
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: py31compat
+.. automodule:: py27compat.traceback
     :members:
     :undoc-members:
     :show-inheritance:
 
-.. automodule:: py33compat
+.. automodule:: py31compat.functools
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+.. automodule:: py33compat.collections
     :members:
     :undoc-members:
     :show-inheritance:
