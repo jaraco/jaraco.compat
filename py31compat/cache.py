@@ -1,7 +1,7 @@
 from __future__ import absolute_import
 
 import functools
-from collections import namedtuple
+from collections import namedtuple, OrderedDict
 
 try:
 	import builtins
@@ -16,7 +16,6 @@ except ImportError:
 	except Exception:
 		from _dummy_thread import allocate_lock as Lock
 
-from py26compat.collections import OrderedDict
 from ._functools_wraps import wraps
 
 
