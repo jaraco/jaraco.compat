@@ -12,7 +12,7 @@ class simplemethod(object):
 	def __new__(cls, func):
 		if sys.version_info >= (3,):
 			return func
-		return super(simplemethod, cls).__new__(cls, func)
+		return super(simplemethod, cls).__new__(cls)
 
 	def __init__(self, func):
 		self.func = func
