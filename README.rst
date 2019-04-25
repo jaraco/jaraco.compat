@@ -9,8 +9,8 @@
 .. .. image:: https://img.shields.io/appveyor/ci/jaraco/skeleton/master.svg
 ..    :target: https://ci.appveyor.com/project/jaraco/skeleton/branch/master
 
-.. .. image:: https://readthedocs.org/projects/skeleton/badge/?version=latest
-..    :target: https://skeleton.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/jaracocompat/badge/?version=latest
+   :target: https://jaracocompat.readthedocs.io/en/latest/?badge=latest
 
 Forward compatibility for Python packages,
 allowing future constructs to be borrowed before they're available in
