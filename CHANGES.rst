@@ -1,3 +1,10 @@
+3.1
+===
+
+* Now ``collections.abc`` is a proper module, allowing
+  for ``from py33compat.collections.abc import Iterable``
+  or similar.
+
 3.0
 ===
 
