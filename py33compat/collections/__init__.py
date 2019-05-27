@@ -8,14 +8,5 @@ True
 >>> from py33compat import collections
 >>> isinstance(collections.abc, types.ModuleType)
 True
+>>> from py33compat.collections.abc import Iterable
 """
-
-from __future__ import absolute_import
-
-try:
-	from collections import abc
-except ImportError:
-	import collections as abc
-
-
-__all__ = ['abc']
