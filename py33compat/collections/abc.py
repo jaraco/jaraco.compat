@@ -3,6 +3,6 @@
 from __future__ import absolute_import
 
 try:
-	from collections.abc import *
+    from collections.abc import *
 except ImportError:
-	from collections import *
+    from collections import *

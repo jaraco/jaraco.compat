@@ -10,11 +10,7 @@ import traceback
 
 
 def _format_exc_2x(*args, **kwargs):
-	return traceback.format_exc(*args, **kwargs).decode('utf-8')
+    return traceback.format_exc(*args, **kwargs).decode('utf-8')
 
 
-format_exc = (
-	_format_exc_2x
-	if sys.version_info < (3,) else
-	traceback.format_exc
-)
+format_exc = _format_exc_2x if sys.version_info < (3,) else traceback.format_exc

@@ -7,10 +7,10 @@ import functools
 
 
 def update_wrapper(wrapper, wrapped, *args, **kwargs):
-	res = functools.update_wrapper(wrapper, wrapped, *args, **kwargs)
-	res.__wrapped__ = wrapped
-	return res
+    res = functools.update_wrapper(wrapper, wrapped, *args, **kwargs)
+    res.__wrapped__ = wrapped
+    return res
 
 
 def wraps(wrapped, *args, **kwargs):
-	return functools.partial(update_wrapper, wrapped=wrapped, *args, **kwargs)
+    return functools.partial(update_wrapper, wrapped=wrapped, *args, **kwargs)
