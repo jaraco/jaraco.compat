@@ -1,3 +1,9 @@
+v4.0.0
+======
+
+* Require Python 3.6. At this point, the module contains
+  no functionality.
+
 3.1
 ===
 
