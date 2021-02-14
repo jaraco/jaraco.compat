@@ -1,5 +1,5 @@
-Welcome to jaraco.compat documentation!
-========================================
+Welcome to |project| documentation!
+===================================
 
 .. toctree::
    :maxdepth: 1
