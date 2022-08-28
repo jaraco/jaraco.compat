@@ -17,6 +17,9 @@
 .. image:: https://readthedocs.org/projects/jaracocompat/badge/?version=latest
    :target: https://jaracocompat.readthedocs.io/en/latest/?badge=latest
 
+.. image:: https://img.shields.io/badge/skeleton-2022-informational
+   :target: https://blog.jaraco.com/skeleton
+
 Forward compatibility for Python packages,
 allowing future constructs to be borrowed before they're available in
 the standard library.
