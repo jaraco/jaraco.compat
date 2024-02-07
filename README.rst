@@ -14,7 +14,7 @@
 .. image:: https://readthedocs.org/projects/jaracocompat/badge/?version=latest
    :target: https://jaracocompat.readthedocs.io/en/latest/?badge=latest
 
-.. image:: https://img.shields.io/badge/skeleton-2023-informational
+.. image:: https://img.shields.io/badge/skeleton-2024-informational
    :target: https://blog.jaraco.com/skeleton
 
 Forward compatibility for Python packages,
