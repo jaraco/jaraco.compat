@@ -1,3 +1,12 @@
+v4.1.0
+======
+
+Features
+--------
+
+- Add py38.r_fix for remove-prefix/suffix.
+
+
 v4.0.0
 ======
 
