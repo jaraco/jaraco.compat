@@ -3,8 +3,13 @@
 'foo'
 >>> r_fix('foo.bar').removeprefix('foo.')
 'bar'
+>>> cached_print = cache(print)
+>>> cached_print('foo')
+foo
+>>> cached_print('foo')
 """
 
+import functools
 import sys
 import types
 
@@ -31,3 +36,9 @@ def _fixer(orig: str):  # pragma: no cover
 
 
 r_fix = _fixer if sys.version_info < (3, 9) else lambda x: x
+
+cache = (
+    functools.cache  # type: ignore[attr-defined]
+    if sys.version_info >= (3, 9)
+    else functools.lru_cache(maxsize=None)
+)

@@ -1,0 +1,1 @@
+Add forward compatibility for functools cache in Python 3.8.
