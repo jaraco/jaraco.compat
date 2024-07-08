@@ -1,3 +1,12 @@
+v4.2.0
+======
+
+Features
+--------
+
+- Add forward compatibility for functools cache in Python 3.8.
+
+
 v4.1.0
 ======
 
