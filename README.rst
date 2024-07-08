@@ -18,17 +18,16 @@
    :target: https://blog.jaraco.com/skeleton
 
 Forward compatibility for Python packages,
-allowing future constructs to be borrowed before they're available in
+allowing future constructs to be borrowed before they are available in
 the standard library.
 
-This package is generally deprecated in favor of more surgical
-backports in separate packages.
+`♫ It's going to be the future soon. It won't always be this way, where the things that make me weak and strange get engineered away. ♫ <https://www.youtube.com/watch?v=l5PEz3kGbp4>`_
 
 Usage
 =====
 
-Import functions from the appropriate pyXXcompat module in your python
-code. When you're eventually ready to upgrade beyond pyXX, you can
+Import functions from the appropriate compat.pyXX module in your python
+code. When a package is eventually ready to upgrade beyond pyXX,
 easily locate (with a grep) and replace those functions with the
 canonical implementations.
 
@@ -38,13 +37,13 @@ Example
 Say you want a namedtuple (introduced in Python 2.6) in a project which
 supports Python 2.5 and greater::
 
-    from py25compat import namedtuple
+    from compat.py25 import namedtuple
     MyTuple = namedtuple('MyTuple', 'a b c')
     mt = MyTuple(1,2,3)
 
 With jaraco.compat installed, this code will run on Python 2.5 and
 greater. When the project is ready to move to Python 2.6, one can easily
-grep for py25compat and make the necessary replacements with minimal
+grep for py25 and make the necessary replacements with minimal
 impact on the code. In this case::
 
     from collections import namedtuple
