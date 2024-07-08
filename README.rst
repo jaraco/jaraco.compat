@@ -21,7 +21,7 @@ Forward compatibility for Python packages,
 allowing future constructs to be borrowed before they are available in
 the standard library.
 
-`♫ It's going to be the future soon. It won't always be this way, where the things that make me weak and strange get engineered away. ♫ <https://www.youtube.com/watch?v=l5PEz3kGbp4>`_
+`♫ It's going to be the future soon. It won't always be this way, when the things that make me weak and strange get engineered away. ♫ <https://www.youtube.com/watch?v=l5PEz3kGbp4>`_
 
 Usage
 =====
