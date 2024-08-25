@@ -12,33 +12,43 @@ foo
 import functools
 import sys
 import types
+from typing import Protocol, cast
 
 
-def _fixer(orig: str):  # pragma: no cover
+class _RFixed(Protocol):
+    def removesuffix(self, suffix: str) -> str: ...
+    def removeprefix(self, prefix: str) -> str: ...
+
+
+def _fixer(orig: str) -> _RFixed:  # pragma: no cover
     """
     Return an object that implements removesuffix and removeprefix on orig.
     """
 
-    def removesuffix(suffix):
+    def removesuffix(suffix: str) -> str:
         # suffix='' should not call orig[:-0].
         if suffix and orig.endswith(suffix):
             return orig[: -len(suffix)]
         else:
             return orig[:]
 
-    def removeprefix(prefix):
+    def removeprefix(prefix: str) -> str:
         if orig.startswith(prefix):
             return orig[len(prefix) :]
         else:
             return orig[:]
 
-    return types.SimpleNamespace(removesuffix=removesuffix, removeprefix=removeprefix)
+    return cast(
+        _RFixed,
+        types.SimpleNamespace(removesuffix=removesuffix, removeprefix=removeprefix),
+    )
 
 
-r_fix = _fixer if sys.version_info < (3, 9) else lambda x: x
+if sys.version_info < (3, 9):  # pragma: no cover
+    cache = functools.lru_cache(maxsize=None)
+    r_fix = _fixer
+else:
+    cache = functools.cache
 
-cache = (
-    functools.cache  # type: ignore[attr-defined]
-    if sys.version_info >= (3, 9)
-    else functools.lru_cache(maxsize=None)
-)
+    def r_fix(orig: str) -> str:
+        return orig
