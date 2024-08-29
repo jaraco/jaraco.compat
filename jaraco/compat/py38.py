@@ -44,11 +44,14 @@ def _fixer(orig: str) -> _RFixed:  # pragma: no cover
     )
 
 
-if sys.version_info < (3, 9):  # pragma: no cover
-    cache = functools.lru_cache(maxsize=None)
-    r_fix = _fixer
-else:
-    cache = functools.cache
+def passthrough(orig: str) -> str:
+    return orig
 
-    def r_fix(orig: str) -> str:
-        return orig
+
+r_fix = _fixer if sys.version_info < (3, 9) else passthrough
+
+cache = (
+    functools.cache  # type: ignore[attr-defined, unused-ignore]
+    if sys.version_info >= (3, 9)
+    else functools.lru_cache(maxsize=None)
+)
