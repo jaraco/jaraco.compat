@@ -18,6 +18,7 @@ classifiers = [
 requires-python = ">=3.9"
 license = "MIT"
 dependencies = [
+	'jaraco.context',
 ]
 dynamic = ["version"]
 
