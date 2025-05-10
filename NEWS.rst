@@ -1,3 +1,12 @@
+v4.3.1
+======
+
+Bugfixes
+--------
+
+- In safe_path, ensure the absolute path is also removed.
+
+
 v4.3.0
 ======
 
