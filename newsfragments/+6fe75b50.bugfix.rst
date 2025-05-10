@@ -1,0 +1,1 @@
+In safe_path, ensure the absolute path is also removed.
