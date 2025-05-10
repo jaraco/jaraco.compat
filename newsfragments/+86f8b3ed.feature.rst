@@ -1,1 +1,0 @@
-Added py310.safe_path to honor PYTHONSAFEPATH.

@@ -1,3 +1,12 @@
+v4.3.0
+======
+
+Features
+--------
+
+- Added py310.safe_path to honor PYTHONSAFEPATH.
+
+
 v4.2.2
 ======
 
